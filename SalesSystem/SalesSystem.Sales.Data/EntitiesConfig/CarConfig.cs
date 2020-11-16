@@ -25,7 +25,8 @@ namespace SalesSystem.Sales.Data.EntitiesConfig
                 .HasColumnName("registrtion_date");
 
             builder.Property(prop => prop.Year).HasColumnType("datetime")
-                .HasColumnName("year_of_manufacture");
+                .HasColumnName("year_of_manufacture")
+                .IsRequired();
 
             builder.Property(prop => prop.Price).HasColumnType("decimal(18,2)")
                 .IsRequired();

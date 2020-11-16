@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SalesSystem.Sales.Data.ORM;
+using SalesSystem.Sales.MVC.Data;
 
 namespace SalesSystem.Sales.MVC
 {
@@ -29,14 +30,17 @@ namespace SalesSystem.Sales.MVC
 
             services.AddDbContext<SalesContext>(opt => opt.UseSqlServer(Configuration
                 .GetConnectionString("SalesSystem")));
+
+            services.AddScoped<SeedingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, SeedingService seedingService)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                seedingService.Seed();
             }
             else
             {

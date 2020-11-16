@@ -14,7 +14,7 @@ namespace SalesSystem.Sales.Domain.Entitites
         public decimal Price { get; set; }
 
 
-        public Client Client { get; set; }
-        public int ClientId { get; set; }
+        //public Client Client { get; set; }
+        //public int ClientId { get; set; }
     }
 }

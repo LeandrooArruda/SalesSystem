@@ -26,9 +26,6 @@ namespace SalesSystem.Sales.Data.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("ClientId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(400)
@@ -59,8 +56,6 @@ namespace SalesSystem.Sales.Data.Migrations
 
                     b.HasKey("Id")
                         .HasName("pk_car");
-
-                    b.HasIndex("ClientId");
 
                     b.ToTable("cars");
                 });
@@ -102,22 +97,6 @@ namespace SalesSystem.Sales.Data.Migrations
                         .HasName("pk_client");
 
                     b.ToTable("clients");
-                });
-
-            modelBuilder.Entity("SalesSystem.Sales.Domain.Entitites.Car", b =>
-                {
-                    b.HasOne("SalesSystem.Sales.Domain.Entitites.Client", "Client")
-                        .WithMany("Cars")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Client");
-                });
-
-            modelBuilder.Entity("SalesSystem.Sales.Domain.Entitites.Client", b =>
-                {
-                    b.Navigation("Cars");
                 });
 #pragma warning restore 612, 618
         }

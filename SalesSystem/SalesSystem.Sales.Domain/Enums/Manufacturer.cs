@@ -6,7 +6,7 @@
         Bmw,
         Ferrari,
         Audi,
-        Mustang,
+        Ford,
         Fiat
     }
 }

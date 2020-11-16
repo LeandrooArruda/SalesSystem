@@ -35,23 +35,23 @@ namespace SalesSystem.Sales.Data.ORM
 
         }
 
-        public override Task<int> SaveChangesAsync(CancellationToken cancellation = new CancellationToken())
-        {
-            foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType
-                ().GetProperty("RegistrationDate") != null))
-            {
-                if (entry.State == EntityState.Added)
-                {
-                    entry.Property("RegistrationDate").CurrentValue = DateTime.Now;
-                }
+        //public override Task<int> SaveChangesAsync(CancellationToken cancellation = new CancellationToken())
+        //{
+        //    foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType
+        //        ().GetProperty("RegistrationDate") != null))
+        //    {
+        //        if (entry.State == EntityState.Added)
+        //        {
+        //            entry.Property("RegistrationDate").CurrentValue = DateTime.Now;
+        //        }
 
-                if (entry.State == EntityState.Modified)
-                {
-                    entry.Property("RegistrationDate").IsModified = false;
-                }
-            }
+        //        if (entry.State == EntityState.Modified)
+        //        {
+        //            entry.Property("RegistrationDate").IsModified = false;
+        //        }
+        //    }
 
-            return base.SaveChangesAsync(cancellation);
-        }
+        //    return base.SaveChangesAsync(cancellation);
+        //}
     }
 }

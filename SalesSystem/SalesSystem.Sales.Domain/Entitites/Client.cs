@@ -12,6 +12,6 @@ namespace SalesSystem.Sales.Domain.Entitites
         public string Document { get; set; }
         public Gender Gender { get; set; }
 
-        public ICollection<Car> Cars { get; set; }
+        //public ICollection<Car> Cars { get; set; }
     }
 }
