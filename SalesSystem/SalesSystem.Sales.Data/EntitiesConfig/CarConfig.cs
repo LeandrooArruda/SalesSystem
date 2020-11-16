@@ -8,9 +8,9 @@ namespace SalesSystem.Sales.Data.EntitiesConfig
     {
         public void Configure(EntityTypeBuilder<Car> builder)
         {
-            builder.ToTable("Cars");
+            builder.ToTable("cars");
 
-            builder.HasKey(prop => prop.Id).HasName("Pk_Car");
+            builder.HasKey(prop => prop.Id).HasName("pk_car");
 
             builder.Property(prop => prop.Name).HasColumnType("varchar(80)")
                 .IsRequired();
@@ -22,10 +22,10 @@ namespace SalesSystem.Sales.Data.EntitiesConfig
                 .IsRequired();
 
             builder.Property(prop => prop.RegistrationDate).HasColumnType("datetime")
-                .HasColumnName("Registrtion_Date");
+                .HasColumnName("registrtion_date");
 
             builder.Property(prop => prop.Year).HasColumnType("datetime")
-                .HasColumnName("Year_of_Manufacture");
+                .HasColumnName("year_of_manufacture");
 
             builder.Property(prop => prop.Price).HasColumnType("decimal(18,2)")
                 .IsRequired();

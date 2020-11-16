@@ -1,10 +1,12 @@
-﻿using SalesSystem.Sales.Domain.EntitiesBase;
-using SalesSystem.Sales.Domain.Enums;
+﻿using SalesSystem.Sales.Domain.Enums;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace SalesSystem.Sales.Domain.Entitites
+namespace SalesSystem.Sales.MVC.Models
 {
-    public class Car : EntityBase
+    public class Car
     {
         public string Description { get; set; }
 
@@ -12,9 +14,5 @@ namespace SalesSystem.Sales.Domain.Entitites
         public string Model { get; set; }
         public Manufacturer Type { get; set; }
         public decimal Price { get; set; }
-
-
-        public Client Client { get; set; }
-        public int ClientId { get; set; }
     }
 }

@@ -11,6 +11,7 @@ namespace SalesSystem.Sales.Data.ORM
     public class SalesContext : DbContext
     {
         public DbSet<Car> Cars { get; set; }
+        public DbSet<Client> Clients { get; set; }
 
         public SalesContext(DbContextOptions<SalesContext> options) 
             : base(options)
@@ -32,6 +33,25 @@ namespace SalesSystem.Sales.Data.ORM
                 modelBuilder.ApplyConfiguration(configurationInstance);
             }
 
+        }
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellation = new CancellationToken())
+        {
+            foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType
+                ().GetProperty("RegistrationDate") != null))
+            {
+                if (entry.State == EntityState.Added)
+                {
+                    entry.Property("RegistrationDate").CurrentValue = DateTime.Now;
+                }
+
+                if (entry.State == EntityState.Modified)
+                {
+                    entry.Property("RegistrationDate").IsModified = false;
+                }
+            }
+
+            return base.SaveChangesAsync(cancellation);
         }
     }
 }
